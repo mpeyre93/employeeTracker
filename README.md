@@ -1,35 +1,35 @@
-# employeeTracker
 # MySQL:
+# employeeTracker
 
-Developers are often tasked with creating interfaces that make it easy for non-developers to view and interact with information stored in databases. Often these interfaces are known as **C**ontent **M**anagement **S**ystems. In this homework assignment, your challenge is to architect and build a solution for managing a company's employees using node, inquirer, and MySQL.
+This is a CML application that makes it easy for non-developers to view and interact with information stored in databases. This application will use node, inquirer, and MySQL to create a simple employee management system.
 
-## Instructions
-
-Example of how the terminal will look:
-
-![TTerminal Screenshot](Images/terminalSS.png?raw=true)
+## Tabel criteria
 
 * **department**:
 
-  * **id** - INT PRIMARY KEY
-  * **name** - VARCHAR(30) to hold department name
+  * **id** 
+  * **name** 
 
 * **role**:
 
-  * **id** - INT PRIMARY KEY
-  * **title** -  VARCHAR(30) to hold role title
-  * **salary** -  DECIMAL to hold role salary
-  * **department_id** -  INT to hold reference to department role belongs to
+  * **id** 
+  * **title** 
+  * **salary** 
+  * **department_id** 
 
 * **employee**:
 
-  * **id** - INT PRIMARY KEY
-  * **first_name** - VARCHAR(30) to hold employee first name
-  * **last_name** - VARCHAR(30) to hold employee last name
-  * **role_id** - INT to hold reference to role employee has
-  * **manager_id** - INT to hold reference to another employee that manager of the current employee. This field may be null if the employee has no manager
+  * **id** 
+  * **first_name** 
+  * **last_name** 
+  * **role_id** 
+  * **manager_id** 
+
+  Example of how the terminal will look:
+
+![TTerminal Screenshot](Images/terminalSS.png?raw=true)
   
-This is a command-line application that at a minimum allows the user to:
+This is a command-line application allows the user to:
 
   * Add departments, roles, employees
 
@@ -51,6 +51,6 @@ NPM installs include:
 * The [InquirerJs](https://www.npmjs.com/package/inquirer/v/0.2.3) NPM package to interact with the user via the command-line.
 
 * The [console.table](https://www.npmjs.com/package/console.table) to print MySQL rows to the console. There is a built-in version of `console.table`, but the NPM package formats the data a little better for our purposes.
- - - 
+- - - 
 Below is a video of the application:
 ![Employee Tracker](Assets/employee-tracker.gif)
