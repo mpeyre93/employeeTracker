@@ -14,10 +14,12 @@ var connection = mysql.createConnection({
 // connect to the database
 connection.connect(function(err){
     if (err) throw err;
+    //call to start prompt
     runSearch();
 });
 
 function runSearch(){
+  //initial prompt selection list
     inquirer.prompt({
         name: "action",
         type: "rawlist",
@@ -32,6 +34,7 @@ function runSearch(){
             "Add Role"
         ]
     })
+    //allows to call each function based off user selection
     .then(function(val){
         switch (val.action){
             case "View Employees":
@@ -66,6 +69,7 @@ function viewEmployees() {
       if (err) throw err;
       // log all results of the SELECT statement
       console.table(res);
+      //shows initial prompt selection list
       runSearch();
   })
 }
@@ -177,12 +181,14 @@ function addEmployee() {
           name: "role",
           type: "list",
           message: "What is the employee's role? ",
+          //user can select a role from list
           choices: chooseRole()
         },
         {
             name: "choice",
             type: "rawlist",
             message: "Who is the employee's manager?",
+            //user can select a manager from list
             choices: chooseManager()
         }
     ]).then(function (res) {
@@ -197,6 +203,7 @@ function addEmployee() {
         },
             function(err, res){
                 if (err) throw err;
+                //prompt user of action completion
                 console.table(res + " employee has been added\n");
                 runSearch();
             })
@@ -228,6 +235,7 @@ function addRole() {
             },
             function(err, res) {
                 if (err) throw err;
+                //prompt user of action completion
                 console.table(res + " employee role inserted\n");
                 runSearch();
             }
@@ -252,6 +260,7 @@ function addDepartment() {
             },
             function(err, res) {
                 if (err) throw err
+                //prompt user of action completion
                 console.table(res + " department added\n");
                 runSearch();
             }
