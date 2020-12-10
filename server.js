@@ -70,7 +70,7 @@ function viewEmployees() {
   })
 }
 
-// View Employees By Departments
+// View Departments
 function viewDepartments() {
     connection.query("SELECT employee.first_name, employee.last_name, department.name AS Department FROM employee JOIN role ON employee.role_id = role.id JOIN department ON role.department_id = department.id ORDER BY employee.id;", 
     function(err, res) {
@@ -145,17 +145,13 @@ function updateEmployeeRole() {
         var roleId = chooseRole().indexOf(val.role) + 1
         connection.query("UPDATE employee SET WHERE ?", 
         {
-          last_name: val.lastName
-           
-        }, 
-        {
+          last_name: val.lastName,
           role_id: roleId
-           
         }, 
         function(err){
-            if (err) throw err
-            console.table(val)
-            runSearch()
+            if (err) throw err;
+            console.table(val);
+            runSearch();
         })
   
     });
@@ -188,20 +184,20 @@ function addEmployee() {
             message: "Who is the employee's manager?",
             choices: chooseManager()
         }
-    ]).then(function (val) {
-      var roleId = chooseRole().indexOf(val.role) + 1
-      var managerId = chooseManager().indexOf(val.choice) + 1
+    ]).then(function (res) {
+      var roleId = chooseRole().indexOf(res.role) + 1
+      var managerId = chooseManager().indexOf(res.choice) + 1
       connection.query("INSERT INTO employee SET ?", 
         {
-          first_name: val.firstName,
-          last_name: val.lastName,
+          first_name: res.firstName,
+          last_name: res.lastName,
           manager_id: managerId,
           role_id: roleId
         },
             function(err, res){
-                if (err) throw err
-                console.table(val + " employee has been added\n");
-                runSearch()
+                if (err) throw err;
+                console.table(res.firstName + res.lastname + " employee has been added\n");
+                runSearch();
             })
 
   })
@@ -214,13 +210,12 @@ function addRole() {
         {
           name: "Title",
           type: "input",
-          message: "What is this role's Title?"
+          message: "What is the Title?"
         },
         {
           name: "Salary",
           type: "input",
-          message: "What is the Salary?"
-
+          message: "Enter Salary?"
         } 
     ]).then(function(res) {
          connection.query(
@@ -230,12 +225,11 @@ function addRole() {
               salary: res.Salary,
             },
             function(err, res) {
-                if (err) throw err
+                if (err) throw err;
                 console.table(res + " employee role inserted\n");
                 runSearch();
             }
         )
-
     });
   });
   }
@@ -254,7 +248,6 @@ function addDepartment() {
             "INSERT INTO department SET ? ",
             {
               name: res.name
-            
             },
             function(err, res) {
                 if (err) throw err
