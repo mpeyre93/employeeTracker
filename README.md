@@ -52,5 +52,5 @@ NPM installs include:
 
 * The [console.table](https://www.npmjs.com/package/console.table) to print MySQL rows to the console. 
 - - - 
-Below is a video of the application:
-<iframe src="https://drive.google.com/file/d/1of2HRBw0kjZJnc93v_lQNf3OXnK2WZpO/preview" width="640" height="480"></iframe>
+Below is a video of the application: 
+https://drive.google.com/file/d/1of2HRBw0kjZJnc93v_lQNf3OXnK2WZpO/view 
